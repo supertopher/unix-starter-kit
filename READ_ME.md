@@ -135,7 +135,9 @@ However, if we want this setting to exist outside of the current session we have
 
 *Bringing all together with something completely different*
 
-Lets install python and a python version manager.  As with any command line installation in OSX we should start with ```brew```.  There is a project called ```pyenv``` for python version management that functions almost identically to ```rbenv```.  [Pyenv Github Page](https://github.com/yyuu/pyenv)  Let's install that package with ```brew```.  You should alwasys read the output after a brew install to see if there are postinstallation notes.  However in this one case: Do **NOT** follow the postinstallation instructions.  We are going to add the path for python manually.  To start let's see what python this system is using now with ```which```.  You should see output simalair to:
+Lets install python and a python version manager.  As with any command line installation in OSX we should start with ```brew```.  There is a project called ```pyenv``` for python version management that functions almost identically to ```rbenv```.  This is the [Pyenv Github Page](https://github.com/yyuu/pyenv).  The github page of projects is a great place to find information on installation and trouble shooting.  They may not always have the answer, but it is best to check with the authors before consulting random people on stack overflow.
+
+Let's install pyenv with ```brew```.  You should always read the output after a brew install to see if there are postinstallation notes.  However in this one case: Do **NOT** follow the postinstallation instructions.  We are going to add the path for python manually.  To start let's see what python this system is using now with ```which```.  You should see output simalair to:
 
 ```
 /usr/bin/python
@@ -145,12 +147,11 @@ This is the system version of python.  Just like the system version of ruby, you
 
 After this installation we can check to see if we are now using a new version of python with ```which``` again.  Sadly, we are still using system python.  To fix this we have to add pyenv's executable directories to our path.
 
-According to the project's github readme the default root installation directory for Pyenv is ```~/.pyenv```.  This directory stores it's executables in a folder called ```bin``` We must add this to our path using the shell initilization files (again ie: ```.bash_profile```)  When adding home directories to the profile it is considered good practice to use ```$HOME``` instead of ```~```.  If you cd to each of these you will find that they both resolve to the same place.  Add python to your path non-destructively using ```.bash_profile```.  
+According to the project's github readme the default root installation directory for Pyenv is ```~/.pyenv```.  This directory stores it's python executables in a folder called ```shims``` We must add this to our path using the shell initilization files (again ie: ```.bash_profile```)  When adding home directories to the profile it is considered good practice to use ```$HOME``` instead of ```~```.  If you cd to each of these you will find that they both resolve to the same place.  Add python to your path non-destructively using ```.bash_profile```.  
 
-When you have succeeded you should 
+When you have succeeded the output from which python should read ```/Users/topher/.pyenv/shims/python``` 
 
-#ajdiow
----------------
+YAY! Python works and stuff! Congratulations you are a UNIX master(ish).
 
 
 
