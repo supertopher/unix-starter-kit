@@ -1,3 +1,5 @@
+![image](http://)
+
 # Unix
 
 ### Understanding these concepts will make the rest of your programming life easier.
@@ -8,8 +10,8 @@ By the end of these challenges you should be comfortable:
 
 *	Using the man pages to effectively understand commands you don't know in UNIX
 *	Understand how to use the pipe operator
-*	Manipulate the PATH
-*	Install and debug new executables within your own environment
+*	Manipulating the PATH
+*	Installing and debuging new executables within your own environment
 
 
 ## Release Zero
