@@ -61,7 +61,7 @@ Having mastered the ```man``` command this guide will no longer explain new comm
 -----------
 *The PATH*
 
-![image](http://https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/path.jpg)
+![image](https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/path.jpg)
 
 The path is a list of directories that UNIX shell looks in for executables.  Let's examine the path of the computer you are currently on.  PATH is just a varaible in unix.  As with any variable we can ```puts``` the content of that variable into our interactive shell.  In ruby land to see a variable you can do things like ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.  
 
