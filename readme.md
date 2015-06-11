@@ -153,7 +153,7 @@ Now that you know a little more about PATHs and spaces in Bash, let's add ```.``
 
 Congratulations! You can now manipulate a path (and troll people!)
 
-However, if we want this setting to exist outside of the current session we have to add this PATH addition to the shell initilization files.  Most commonly for bash this is ```.bash_profile``` and in ZSH is ```.zshrc```.  These files are just a list of commands than run when you start your shell... **Everytime** you start your shell.
+However, if we want this setting to exist outside of the current session we have to add this PATH addition to the shell initilization files.  Most commonly in bash this is a file called ```.bash_profile```.  This file is a list of commands than run when you start your shell... **Everytime** you start your shell.
 
 ## Release 3
 
