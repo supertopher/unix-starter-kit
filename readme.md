@@ -121,21 +121,21 @@ In the windows world we know that a file is a program because the filename ends 
 
 You can determine if you have successfully made the ls program executable when typing ```./ls``` yields the echo output you wrote earlier.
 
-We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  Let's add it to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.
+We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  We're going to add the current directory (denoted by the `.`) to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.
 
 ```
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 ```
 
-Note that each path location is deleniated by a ```:```.  Additionally these additions to the path are made non-destructive becasuse the END of each addition the variable ```$PATH``` will add the exisitng path back to the path variable.  The keeps the exisitng path intact when adding new things to it.  You need to add ```.``` to the beginning of you path for this part of the challenge.  Please note that shell variables hate whitespace.  Whitespace tells shell to look for a new command.  Don't use spaces.  For example:
+Note that each path location is deleniated by a ```:```.  Additionally these additions to the path are made non-destructive becasuse the END of each addition the variable ```$PATH``` will add the exisitng path back to the path variable.  The keeps the exisitng path intact when adding new things to it.  Please note that shell variables hate whitespace.  Whitespace tells shell to look for a new command.  Don't use spaces.  For example:
 
 ```
 TOPHER="You can have spaces in strings, thats cool, but not outside strings :/"
 echo $TOPHER
 ```
 
-When you have succeeded you will be able to type ```ls``` in the folder where your custom ```ls``` is located and see the output of your ```echo```.  Additionally the command ```echo $PATH | tr : \\n``` should look something like this
+Now that you know a little more about PATHs and spaces in Bash, let's add ```.``` to the beginning of your path.  When you have succeeded you will be able to type ```ls``` in the folder where your custom ```ls``` is located and see the output of your ```echo```.  Additionally the command ```echo $PATH | tr : \\n``` should look something like this
 
 ```
 .
