@@ -107,17 +107,19 @@ Unix comes with a tool to help you debug issues with the path called ```which```
 
 *Create a new executable and add it to your path*
 
-Create a directory using ```mkdir```
+- Create a directory using ```mkdir``` (hint: look up `mkdir` using `man`)
+- ```touch``` a new file called ```ls```
+- Edit the new file using your editior of choice.
+  - Add to this file a command that has some interesting output for example ```echo My Cohort Runs DBC!!!!!111one```.
+- Save this file.
 
-```touch``` a new file called ```ls```
+When you want to execute any program not found in your path (such as the one we just made) you need to tell unix the path to that program not just the name of the program.  Thus we can type the full path to the command ie: ```/Users/topher/Desktop/super-best-unix/ls``` or we can use a single dot ```.```.  Obviously typing the complete path to a folder you are already in is annoying.  You can always shortcut to your current working directory with a simple period.  So we can type ```./ls``` and it will have the same effect as typing the full path.
 
-Edit the new file using your editior of choice.
+Spoiler Alert: ```bash: ./ls: Permission denied``` is going to happen to you.
 
-Add to this file a command that has some interesting output for example ```echo My Cohort Runs DBC!!!!!111one```.  Save this file and try to run it locally.  When you want to execute any program not found in your path (such as the one we just made) you need to tell unix the path to that program not just the name of the program.  Thus we can type the full path to the command ie: ```/Users/topher/Desktop/super-best-unix/ls``` or we can use ```.```.  Obviously typing the complete path to a folder you are already in is annoying.  You can always shortcut to your current working directory with a simple period.  So we can type ```./ls``` and it will have the same effect as typing the full path.  Spoiler Alert: ```bash: ./ls: Permission denied``` is going to happen to you.
+In the windows world we know that a file is a program because the filename ends in ```.exe```.  In unix there are a series of bits (stored as properties of the file, like it's name and timestamp) that tell the computer if that file can be executed by a given user.  In order to execute this file we must flip the executable bit on.  Shockingly, unix has a tool for that.  We can use ```chmod```to make the change.  Use the man pages or the googles to determine how to do this.
 
-In the windows world we know that a file is a program because the filename ends in ```.exe``` in unix there are a series of bits that tell the computer if a file can be executed by a given user.  In order to execute this file we must flip the executable bit on.  Shockingly unix has a tool for that.  We can use ```chmod```to modify this bit.  Use the man pages or the googles to determine how to do this.  Hint: the syntax to REMOVE read permission from the file we just created you could run ```chmod -r```.
-
-You can determine if you have successfully made the ls program when typing ```./ls``` yields the echo output you wrote earlier.
+You can determine if you have successfully made the ls program executable when typing ```./ls``` yields the echo output you wrote earlier.
 
 We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  Let's add it to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.
 
