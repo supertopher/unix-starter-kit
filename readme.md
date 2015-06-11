@@ -24,13 +24,19 @@ By the end of these challenges you should be comfortable:
 
 Unix was created in the 70s.  At this time internet access was virtually non-existant.  You couldn't google answer. You can't check the project's github page.  Yet, the engineers crafted a working solution for teaching new users without either of those tools: Man pages.  Using the ```man``` command you can read the manual for virtually all UNIX tools.  This solution works so well that googling the answers to questions answered in the man pages is often virtually impossible.  People who write shell don't copy thigns from the manual to the internet.  You would never need to; the answer is right at your fingers with man pages.
 
-All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)  To be clear, when you type ```man ls``` it opens the manual for ```ls``` in the unix tool ```less```
+All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)  To be clear, when you type ```man ls``` it opens the manual for ```ls``` in the unix tool ```less```.
 
-Let's use the ```man``` tool to understand ```less```
+Let's use the ```man``` tool to understand ```less```.  You can exit any time by typing `q`.
 
 try the command ```man less```
 
-You should see before you a brief description of the command followed by an explanation of it's options.  You can use regex to search any file that is open in less by typing ```/``` followed by any regex search.  This search can be as simple as typing ```pattern``` to find the fist occurance of the word pattern in the manual.  This is a quick way to understand what command flags (sometimes called switches) are doing for any UNIX command. The ```-l``` in the command```ls -l``` is an example of a flag.
+You should see before you a brief description of the command followed by an explanation of it's options.
+
+Notice the colon `:` towards the bottom left.  When you type anything, that's where it will appear.  As a reminder, typing `q` will exit back to the terminal.  Pressing the `space bar` will scroll down a screen at a time.
+
+You can use regex to search any file that is open in less by typing ```/``` followed by any regex search.  This search can be as simple as typing ```pattern``` to find the fist occurance of the word pattern in the manual.
+
+Searching using regex is a quick way to understand what command flags (sometimes called switches) are doing for any UNIX command. The ```-l``` in the command```ls -l``` is an example of a flag.
 
 You have probably been told at some point during your education here to use ```ps -A | grep ruby``` or ```ps aux | grep ruby``` to find a ruby process that is running the background.  If you don't know what those commands are doing ```man``` is a great place to find out what those commands you are typing actually do.
 
