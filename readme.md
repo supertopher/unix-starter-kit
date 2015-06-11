@@ -142,6 +142,8 @@ However, if we want this setting to exist outside of the current session we have
 
 *Bringing all together with something completely different*
 
+![image](https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/diff.jpg)
+
 Lets install python and a python version manager.  As with any command line installation in OSX we should start with ```brew```.  There is a project called ```pyenv``` for python version management that functions almost identically to ```rbenv```.  This is the [Pyenv Github Page](https://github.com/yyuu/pyenv).  The github page of projects is a great place to find information on installation and trouble shooting.  They may not always have the answer, but it is best to check with the authors before consulting random people on stack overflow.
 
 Let's install pyenv with ```brew```.  You should always read the output after a brew install to see if there are postinstallation notes.  However in this one case: Do **NOT** follow the postinstallation instructions.  We are going to add the path for python manually.  To start let's see what python this system is using now with ```which```.  You should see output simalair to:
