@@ -26,19 +26,19 @@ Unix was created in the 70s.  At this time internet access was virtually non-exi
 
 All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)  To be clear, when you type ```man ls``` it opens the manual for ```ls``` in the unix tool ```less```
 
-Let's use the ```man``` tool to understand ```less``` 
+Let's use the ```man``` tool to understand ```less```
 
-try the command ```man less``` 
+try the command ```man less```
 
 You should see before you a brief description of the command followed by an explanation of it's options.  You can use regex to search any file that is open in less by typing ```/``` followed by any regex search.  This search can be as simple as typing ```pattern``` to find the fist occurance of the word pattern in the manual.  This is a quick way to understand what command flags (sometimes called switches) are doing for any UNIX command. The ```-l``` in the command```ls -l``` is an example of a flag.
 
-You have probably been told at some point during your education here to use ```ps -A | grep ruby``` or ```ps aux | grep ruby``` to find a ruby process that is running the background.  If you don't know what those commands are doing ```man``` is a great place to find out what those commands you are typing actually do.  
+You have probably been told at some point during your education here to use ```ps -A | grep ruby``` or ```ps aux | grep ruby``` to find a ruby process that is running the background.  If you don't know what those commands are doing ```man``` is a great place to find out what those commands you are typing actually do.
 
 Try using ```man ps``` in the terminal.  Skim this document and determine the following
 
 What is the ```ps``` command doing?
 
-What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)  Try running some variations on this command using the information you have gleamed.  
+What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)  Try running some variations on this command using the information you have gleamed.
 
 Make your ```ps``` output more readable by adding the flag that will change the command names listed from the full command line to simply the executable name
 
@@ -63,11 +63,11 @@ Having mastered the ```man``` command this guide will no longer explain new comm
 
 ![image](https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/path.jpg)
 
-The path is a list of directories that UNIX shell looks in for executables.  Let's examine the path of the computer you are currently on.  PATH is just a varaible in unix.  As with any variable we can ```puts``` the content of that variable into our interactive shell.  In ruby land to see a variable you can do things like ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.  
+The path is a list of directories that UNIX shell looks in for executables.  Let's examine the path of the computer you are currently on.  PATH is just a varaible in unix.  As with any variable we can ```puts``` the content of that variable into our interactive shell.  In ruby land to see a variable you can do things like ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.
 
-In unix we use ```echo``` instead of puts.  Try this now with the command ```echo $PATH```  the ```$``` indicates to the shell that you want the code that comes next to be evaluated before the command in completed.  This helps the shell understand the difference between human speech and code that needs evaluation.  This ```$``` can be used in any unix shell to force the shell to evaluate something first.  
+In unix we use ```echo``` instead of puts.  Try this now with the command ```echo $PATH```  the ```$``` indicates to the shell that you want the code that comes next to be evaluated before the rest command in completed.  This helps the shell understand the difference between human speech and code that needs evaluation.  This ```$``` can be used in any unix shell to force the shell to evaluate something first.
 
-You may have noticed that this string of output is basically unreadable.  The syntax that seperates lines in the PATH variable are ```:```s.  Each ```:``` denotes the end of one line and the start of a new one.  We can replace those ```:```s with new line characters using UNIX.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.  
+You may have noticed that this string of output is basically unreadable.  The syntax that seperates lines in the PATH variable are ```:```s.  Each ```:``` denotes the end of one line and the start of a new one.  We can replace those ```:```s with new line characters using UNIX.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.
 
 Using the ```tr``` tool we format the output to be much more readable.  try running ```echo $PATH | tr : \\n```.  This should give you an output that looks something like this.
 
@@ -83,20 +83,20 @@ Using the ```tr``` tool we format the output to be much more readable.  try runn
 /sbin
 ```
 
-This list of folders are the locations of executables in your computer that the shell will look through.  Everytime you type any command in unix ie: ```ps ls cd ruby bundle``` literally every command you type is in one of these folders.  When you type anything for example ```ruby``` unix will start at the top of this list and work it's way down looking for a command called ```ruby```.  Unix will stop after it finds any match.  Thus you can prioritze tools of the same name by putting those things earlier in the path.  For example you never uninstalled the system version of ruby, yet when you type ```ruby``` you get the version that RVM gives you instead of the version that shipped with OSX.  
+This list of folders are the locations of executables in your computer that the shell will look through.  Everytime you type any command in unix ie: ```ps ls cd ruby bundle``` literally every command you type is in one of these folders.  When you type anything for example ```ruby``` unix will start at the top of this list and work it's way down looking for a command called ```ruby```.  Unix will stop after it finds any match.  Thus you can prioritze tools of the same name by putting those things earlier in the path.  For example you never uninstalled the system version of ruby, yet when you type ```ruby``` you get the version that RVM gives you instead of the version that shipped with OSX.
 
 Unix comes with a tool to help you debug issues with the path called ```which```.  See which ruby your computer is currently running with ```which ruby```.  The result of which tells you where unix found the command that you ask it about.  This output of this command should tell you that you are using version of ruby provided by rbenv.  We will create an example of this together in the next section.
 
 ## Release 2
 -----------
 
-*Create a new executable and add it to your path* 
+*Create a new executable and add it to your path*
 
 Create a directory using ```mkdir```
 
-```touch``` a new file called ```ls``` 
+```touch``` a new file called ```ls```
 
-Edit the new file using your editior of choice.  
+Edit the new file using your editior of choice.
 
 Add to this file a command that has some interesting output for example ```echo My Cohort Runs DBC!!!!!111one```.  Save this file and try to run it locally.  When you want to execute any program not found in your path (such as the one we just made) you need to tell unix the path to that program not just the name of the program.  Thus we can type the full path to the command ie: ```/Users/topher/Desktop/super-best-unix/ls``` or we can use ```.```.  Obviously typing the complete path to a folder you are already in is annoying.  You can always shortcut to your current working directory with a simple period.  So we can type ```./ls``` and it will have the same effect as typing the full path.  Spoiler Alert: ```bash: ./ls: Permission denied``` is going to happen to you.
 
@@ -104,21 +104,21 @@ In the windows world we know that a file is a program because the filename ends 
 
 You can determine if you have successfully made the ls program when typing ```./ls``` yields the echo output you wrote earlier.
 
-We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  Let's add it to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.  
+We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  Let's add it to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.
 
 ```
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 ```
 
-Note that each path location is deleniated by a ```:```.  Additionally these addition to the path are made non-destructive becasuse the END of each addition the variable ```$PATH``` will add the exisitng path.  The keeps the exisitng path intact when adding new things to it.  You need to add ```.``` to the beginning of you path.  Please note that shell variables hate whitespace.  Whitespace tells shell to look for a new command.  Don't use spaces.  For example:
+Note that each path location is deleniated by a ```:```.  Additionally these additions to the path are made non-destructive becasuse the END of each addition the variable ```$PATH``` will add the exisitng path back to the path variable.  The keeps the exisitng path intact when adding new things to it.  You need to add ```.``` to the beginning of you path for this part of the challenge.  Please note that shell variables hate whitespace.  Whitespace tells shell to look for a new command.  Don't use spaces.  For example:
 
 ```
 TOPHER="You can have spaces in strings, thats cool, but not outside strings :/"
 echo $TOPHER
 ```
 
-When you have succeeded you will be able to type ```ls``` in the folder where your custom ```ls``` is located and see the output of your ```echo```.  Additionally the command ```echo $PATH``` should look something like this
+When you have succeeded you will be able to type ```ls``` in the folder where your custom ```ls``` is located and see the output of your ```echo```.  Additionally the command ```echo $PATH | tr : \\n``` should look something like this
 
 ```
 .
@@ -136,7 +136,7 @@ When you have succeeded you will be able to type ```ls``` in the folder where yo
 
 Congratulations! You can now manipulate a path (and troll people!)
 
-However, if we want this setting to exist outside of the current session we have to add this PATH addition to the shell initilization files.  The PATHMost commonly for bash this is ```.bash_profile``` and in ZSH is ```.zshrc```.  
+However, if we want this setting to exist outside of the current session we have to add this PATH addition to the shell initilization files.  Most commonly for bash this is ```.bash_profile``` and in ZSH is ```.zshrc```.  These files are just a list of commands than run when you start your shell... **Everytime** you start your shell.
 
 ## Release 3
 
@@ -154,9 +154,9 @@ This is the system version of python.  Just like the system version of ruby, you
 
 After this installation we can check to see if we are now using a new version of python with ```which``` again.  Sadly, we are still using system python.  To fix this we have to add pyenv's executable directories to our path.
 
-According to the project's github readme the default root installation directory for Pyenv is ```~/.pyenv```.  This directory stores it's python executables in a folder called ```shims``` We must add this to our path using the shell initilization files (again ie: ```.bash_profile```)  When adding home directories to the profile it is considered good practice to use ```$HOME``` instead of ```~```.  If you cd to each of these you will find that they both resolve to the same place.  Add python to your path non-destructively using ```.bash_profile```.  
+According to the project's github readme the default root installation directory for Pyenv is ```~/.pyenv```.  This directory stores it's python executables in a folder called ```shims``` We must add this to our path using the shell initilization files (again ie: ```.bash_profile```)  When adding home directories to the profile it is considered good practice to use ```$HOME``` instead of ```~```.  If you cd to each of these you will find that they both resolve to the same place.  Add python to your path non-destructively using ```.bash_profile```.
 
-When you have succeeded the output from which python should read ```/Users/topher/.pyenv/shims/python``` 
+When you have succeeded the output from which python should read ```/Users/topher/.pyenv/shims/python```
 
 YAY! Python works and stuff! Congratulations you are a UNIX master(ish).
 
