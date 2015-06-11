@@ -72,9 +72,11 @@ Having mastered the ```man``` command this guide will no longer explain new comm
 
 ![image](https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/path.jpg)
 
-The path is a list of directories that UNIX shell looks in for executables.  Let's examine the path of the computer you are currently on.  PATH is just a varaible in unix.  As with any variable we can ```puts``` the content of that variable into our interactive shell.  In ruby land to see a variable you can do things like ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.
+The path is a list of directories that UNIX shell looks in for executables.  PATH is just a varaible in unix.  As with any variable in ruby, we can ```puts``` the content of that variable into our interactive shell, for example: ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.
 
-In unix we use ```echo``` instead of puts.  Try this now with the command ```echo $PATH```  the ```$``` indicates to the shell that you want the code that comes next to be evaluated before the rest command in completed.  This helps the shell understand the difference between human speech and code that needs evaluation.  This ```$``` can be used in any unix shell to force the shell to evaluate something first.
+Let's examine the path of the computer you are currently on.
+
+In unix we use ```echo``` instead of `puts`.  Try this now with the command ```echo $PATH```.  The `$` is a "dereferencing operator" and, in the Bash shell, `$X` means "give me the value of the variable named X".  More generally, the ```$``` indicates to the shell that you want the code that comes after it to be evaluated before the rest of the command is completed.
 
 You may have noticed that this string of output is basically unreadable.  The syntax that seperates lines in the PATH variable are ```:```s.  Each ```:``` denotes the end of one line and the start of a new one.  We can replace those ```:```s with new line characters using UNIX.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.
 
