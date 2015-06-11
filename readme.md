@@ -61,7 +61,9 @@ Once you find this flag the output of this command should change from what ```ps
 11463 s001  Ss+    0:00.02 bash
 ```
 
-Having mastered the ```man``` command this guide will no longer explain new commands to you.  If you don't know what the command does look it up in the man pages until you do.
+Having mastered the ```man``` command this guide will no longer explain new commands to you.
+
+**If you don't know what the command does, look it up in the man pages.**
 
 
 ## Release 1
