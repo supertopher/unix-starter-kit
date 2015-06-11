@@ -100,7 +100,7 @@ This list of folders are the locations of executables in your computer that the 
 
 For example, when you type `ruby`, unix will start at the beginning of the list of folders in your `$PATH` and work its way down looking for a command called `ruby`.  Unix will stop after it finds the first match or report a `command not found` error.  You can prioritze tools of the same name by putting those tools earlier in the path.  Consider the fact that you never uninstalled your default system version of ruby, yet when you type ```ruby``` you get the version that `rbenv` gives you instead of the version that shipped with OSX.
 
-Unix comes with a tool to help you debug issues with the path called ```which```.  See which ruby your computer is currently running with ```which ruby```.  The result of which tells you where unix found the command that you ask it about.  This output of this command should tell you that you are using version of ruby provided by rbenv.  We will create an example of this together in the next section.
+Unix comes with a tool to help you debug issues with the path called ```which```.  See which ruby your computer is currently running with ```which ruby```.  The result of which tells you where unix found the command that you invoked.  The output of this command should tell you that you are using a version of ruby provided by rbenv.  We will create an example of this together in the next section.
 
 ## Release 2
 -----------
