@@ -20,6 +20,8 @@ By the end of these challenges you should be comfortable:
 
 *Learn the most important command in UNIX.*
 
+![image](http://imgs.xkcd.com/comics/rtfm.png)
+
 Unix was created in the 70s.  At this time internet access was virtually non-existant.  You couldn't google answer. You can't check the project's github page.  Yet, the engineers crafted a working solution for teaching new users without either of those tools: Man pages.  Using the ```man``` command you can read the manual for virtually all UNIX tools.  This solution works so well that googling the answers to questions answered in the man pages is often virtually impossible.  People who write shell don't copy thigns from the manual to the internet.  You would never need to the answer is right at your fingers.
 
 All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)
