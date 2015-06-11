@@ -22,23 +22,23 @@ By the end of these challenges you should be comfortable:
 
 ![image](http://imgs.xkcd.com/comics/rtfm.png)
 
-Unix was created in the 70s.  At this time internet access was virtually non-existant.  You couldn't google answer. You can't check the project's github page.  Yet, the engineers crafted a working solution for teaching new users without either of those tools: Man pages.  Using the ```man``` command you can read the manual for virtually all UNIX tools.  This solution works so well that googling the answers to questions answered in the man pages is often virtually impossible.  People who write shell don't copy thigns from the manual to the internet.  You would never need to the answer is right at your fingers.
+Unix was created in the 70s.  At this time internet access was virtually non-existant.  You couldn't google answer. You can't check the project's github page.  Yet, the engineers crafted a working solution for teaching new users without either of those tools: Man pages.  Using the ```man``` command you can read the manual for virtually all UNIX tools.  This solution works so well that googling the answers to questions answered in the man pages is often virtually impossible.  People who write shell don't copy thigns from the manual to the internet.  You would never need to; the answer is right at your fingers with man pages.
 
-All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)
+All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)  To be clear, when you type ```man ls``` it opens the manual for ```ls``` in the unix tool ```less```
 
 Let's use the ```man``` tool to understand ```less``` 
 
 try the command ```man less``` 
 
-You should see before you a brief description of the command followed by an explanation of it's options.  You can use regex to search any file that is open in less by typing ```/SEARCHTERM``` this is a quick way to understand what command flags are doing.  
+You should see before you a brief description of the command followed by an explanation of it's options.  You can use regex to search any file that is open in less by typing ```/``` followed by any regex search.  This search can be as simple as typing ```pattern``` to find the fist occurance of the word pattern in the manual.  This is a quick way to understand what command flags (sometimes called switches) are doing for any UNIX command. The ```-l``` in the command```ls -l``` is an example of a flag.
 
 You have probably been told at some point during your education here to use ```ps -A | grep ruby``` or ```ps aux | grep ruby``` to find a ruby process that is running the background.  If you don't know what those commands are doing ```man``` is a great place to find out what those commands you are typing actually do.  
 
-Try using ```man aux``` in the terminal.  Skim this document and determine the following
+Try using ```man ps``` in the terminal.  Skim this document and determine the following
 
 What is the ```ps``` command doing?
 
-What do the flags on ps do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)  Try running some variations on this command using the information you have gleamed.  
+What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)  Try running some variations on this command using the information you have gleamed.  
 
 Make your ```ps``` output more readable by adding the flag that will change the command names listed from the full command line to simply the executable name
 
@@ -56,9 +56,12 @@ Once you find this flag the output of this command should change from what ```ps
 
 Having mastered the ```man``` command this guide will no longer explain new commands to you.  If you don't know what the command does look it up in the man pages until you do.
 
+
 ## Release 1
 -----------
 *The PATH*
+
+![image](http://https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/path.jpg)
 
 The path is a list of directories that UNIX shell looks in for executables.  Let's examine the path of the computer you are currently on.  PATH is just a varaible in unix.  As with any variable we can ```puts``` the content of that variable into our interactive shell.  In ruby land to see a variable you can do things like ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.  
 
