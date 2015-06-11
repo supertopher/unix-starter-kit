@@ -40,11 +40,12 @@ Searching using regex is a quick way to understand what command flags (sometimes
 
 You have probably been told at some point during your education here to use ```ps -A | grep ruby``` or ```ps aux | grep ruby``` to find a ruby process that is running the background.  If you don't know what those commands are doing ```man``` is a great place to find out what those commands you are typing actually do.
 
-Try using ```man ps``` in the terminal.  Skim this document and determine the following
+Try using ```man ps``` in the terminal.  Skim this document and determine the following:
 
-What is the ```ps``` command doing?
+- What is the ```ps``` command doing?
+- What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)
 
-What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)  Try running some variations on this command using the information you have gleamed.
+Now try running some variations on this command using the information you have gleamed.
 
 Make your ```ps``` output more readable by adding the flag that will change the command names listed from the full command line to simply the executable name
 
