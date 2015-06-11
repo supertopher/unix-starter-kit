@@ -179,5 +179,19 @@ When you have succeeded the output from which python should read ```/Users/tophe
 
 YAY! Python works and stuff! Congratulations you are a UNIX master(ish).
 
+## Release 4
 
+*opening up your awareness*
 
+Now that you've seen how you can use UNIX to get stuff done, take a look at all the possibilities by reviewing 2 popular books on the subject (from your phase 1 dropbox of books):
+
+1. http://tinyurl.com/sobell-on-linux
+2. http://tinyurl.com/parker-on-shell-scripting
+
+- skim the table of contents of both books
+- read as much as you can of chapters 5, 8 and 10 in book #1 (Sobell)
+- consider using your new knowledge of the shell to solve some real problems:
+  - try writing tests against your API using a bunch of curl statements in a shell script
+  - try massaging the text in your Rails log files to make better reports
+  - try working with some UNIX system utilities to see how much memory your Rails app is consuming
+  - try trolling your cohort mates by hacking their pairing machines (don't worry, Topher fixes these things later)
