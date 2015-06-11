@@ -78,7 +78,9 @@ Let's examine the path of the computer you are currently on.
 
 In unix we use ```echo``` instead of `puts`.  Try this now with the command ```echo $PATH```.  The `$` is a "dereferencing operator" and, in the Bash shell, `$X` means "give me the value of the variable named X".  More generally, the ```$``` indicates to the shell that you want the code that comes after it to be evaluated before the rest of the command is completed.
 
-You may have noticed that this string of output is basically unreadable.  The syntax that seperates lines in the PATH variable are ```:```s.  Each ```:``` denotes the end of one line and the start of a new one.  We can replace those ```:```s with new line characters using UNIX.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.
+You may have noticed that this string of output is basically unreadable.  The colon seperates lines in the PATH variable.  Each ```:``` denotes the end of one line and the start of a new one.
+
+We can replace each ```:``` with a new line character using another UNIX tool called `tr`.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.  We use the pipe, `|`, to take the output of one command and pass it as input to another command.  Doing this, you can chain simple, modular commands to create complex functionalities.
 
 Using the ```tr``` tool we format the output to be much more readable.  try running ```echo $PATH | tr : \\n```.  This should give you an output that looks something like this.
 
