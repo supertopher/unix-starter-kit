@@ -24,21 +24,28 @@ By the end of these challenges you should be comfortable:
 
 Unix was created in the 70s.  At this time internet access was virtually non-existant.  You couldn't google answer. You can't check the project's github page.  Yet, the engineers crafted a working solution for teaching new users without either of those tools: Man pages.  Using the ```man``` command you can read the manual for virtually all UNIX tools.  This solution works so well that googling the answers to questions answered in the man pages is often virtually impossible.  People who write shell don't copy thigns from the manual to the internet.  You would never need to; the answer is right at your fingers with man pages.
 
-All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)  To be clear, when you type ```man ls``` it opens the manual for ```ls``` in the unix tool ```less```
+All man pages will be opened in a tool called ```less``` which is a UNIX program that aids in reading information that is too large for the standard output.  (IE: man pages)  To be clear, when you type ```man ls``` it opens the manual for ```ls``` in the unix tool ```less```.
 
-Let's use the ```man``` tool to understand ```less```
+Let's use the ```man``` tool to understand ```less```.  You can exit any time by typing `q`.
 
 try the command ```man less```
 
-You should see before you a brief description of the command followed by an explanation of it's options.  You can use regex to search any file that is open in less by typing ```/``` followed by any regex search.  This search can be as simple as typing ```pattern``` to find the fist occurance of the word pattern in the manual.  This is a quick way to understand what command flags (sometimes called switches) are doing for any UNIX command. The ```-l``` in the command```ls -l``` is an example of a flag.
+You should see before you a brief description of the command followed by an explanation of it's options.
+
+Notice the colon `:` towards the bottom left.  When you type anything, that's where it will appear.  As a reminder, typing `q` will exit back to the terminal.  Pressing the `space bar` will scroll down a screen at a time.
+
+You can use regex to search any file that is open in less by typing ```/``` followed by any regex search.  This search can be as simple as typing ```pattern``` to find the fist occurance of the word pattern in the manual.
+
+Searching using regex is a quick way to understand what command flags (sometimes called switches) are doing for any UNIX command. The ```-l``` in the command```ls -l``` is an example of a flag.
 
 You have probably been told at some point during your education here to use ```ps -A | grep ruby``` or ```ps aux | grep ruby``` to find a ruby process that is running the background.  If you don't know what those commands are doing ```man``` is a great place to find out what those commands you are typing actually do.
 
-Try using ```man ps``` in the terminal.  Skim this document and determine the following
+Try using ```man ps``` in the terminal.  Skim this document and determine the following:
 
-What is the ```ps``` command doing?
+- What is the ```ps``` command doing?
+- What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)
 
-What do the flags on ```ps``` do?  (Flags are the options that come after a command ie the ```-A``` in ```ps -A``` and the ```aux``` in ```ps aux```)  Try running some variations on this command using the information you have gleamed.
+Now try running some variations on this command using the information you have gleamed.
 
 Make your ```ps``` output more readable by adding the flag that will change the command names listed from the full command line to simply the executable name
 
@@ -54,7 +61,9 @@ Once you find this flag the output of this command should change from what ```ps
 11463 s001  Ss+    0:00.02 bash
 ```
 
-Having mastered the ```man``` command this guide will no longer explain new commands to you.  If you don't know what the command does look it up in the man pages until you do.
+Having mastered the ```man``` command this guide will no longer explain new commands to you.
+
+**If you don't know what the command does, look it up in the man pages.**
 
 
 ## Release 1
@@ -63,11 +72,15 @@ Having mastered the ```man``` command this guide will no longer explain new comm
 
 ![image](https://raw.githubusercontent.com/supertopher/unix-starter-kit/master/path.jpg)
 
-The path is a list of directories that UNIX shell looks in for executables.  Let's examine the path of the computer you are currently on.  PATH is just a varaible in unix.  As with any variable we can ```puts``` the content of that variable into our interactive shell.  In ruby land to see a variable you can do things like ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.
+The path is a list of directories that UNIX shell looks in for executables.  PATH is just a varaible in unix.  As with any variable in ruby, we can ```puts``` the content of that variable into our interactive shell, for example: ```puts mah_sweet_variable```.  When you run the application you will see the contents of that variable.  The shell is exactly like running a session of IRB in that you are always writing code that is immediatly evaluated when you press enter.
 
-In unix we use ```echo``` instead of puts.  Try this now with the command ```echo $PATH```  the ```$``` indicates to the shell that you want the code that comes next to be evaluated before the rest command in completed.  This helps the shell understand the difference between human speech and code that needs evaluation.  This ```$``` can be used in any unix shell to force the shell to evaluate something first.
+Let's examine the path of the computer you are currently on.
 
-You may have noticed that this string of output is basically unreadable.  The syntax that seperates lines in the PATH variable are ```:```s.  Each ```:``` denotes the end of one line and the start of a new one.  We can replace those ```:```s with new line characters using UNIX.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.
+In unix we use ```echo``` instead of `puts`.  Try this now with the command ```echo $PATH```.  The `$` is a "dereferencing operator" and, in the Bash shell, `$X` means "give me the value of the variable named X".  More generally, the ```$``` indicates to the shell that you want the code that comes after it to be evaluated before the rest of the command is completed.
+
+You may have noticed that this string of output is basically unreadable.  The colon seperates lines in the PATH variable.  Each ```:``` denotes the end of one line and the start of a new one.
+
+We can replace each ```:``` with a new line character using another UNIX tool called `tr`.  This is all part of the beauty of UNIX commands, they all share a common plain-text output which makes communication between UNIX tools very easy to create.  We use the pipe, `|`, to take the output of one command and pass it as input to another command.  Doing this, you can chain simple, modular commands to create complex functionalities.
 
 Using the ```tr``` tool we format the output to be much more readable.  try running ```echo $PATH | tr : \\n```.  This should give you an output that looks something like this.
 
@@ -83,42 +96,46 @@ Using the ```tr``` tool we format the output to be much more readable.  try runn
 /sbin
 ```
 
-This list of folders are the locations of executables in your computer that the shell will look through.  Everytime you type any command in unix ie: ```ps ls cd ruby bundle``` literally every command you type is in one of these folders.  When you type anything for example ```ruby``` unix will start at the top of this list and work it's way down looking for a command called ```ruby```.  Unix will stop after it finds any match.  Thus you can prioritze tools of the same name by putting those things earlier in the path.  For example you never uninstalled the system version of ruby, yet when you type ```ruby``` you get the version that RVM gives you instead of the version that shipped with OSX.
+This list of folders are the locations of executables in your computer that the shell will look through.  Every time you type any command in unix (ie: `ps`, `ls`, `cd`, `ruby`, `bundle`), that command's executable is in one of these folders.
 
-Unix comes with a tool to help you debug issues with the path called ```which```.  See which ruby your computer is currently running with ```which ruby```.  The result of which tells you where unix found the command that you ask it about.  This output of this command should tell you that you are using version of ruby provided by rbenv.  We will create an example of this together in the next section.
+For example, when you type `ruby`, unix will start at the beginning of the list of folders in your `$PATH` and work its way down looking for a command called `ruby`.  Unix will stop after it finds the first match or report a `command not found` error.  You can prioritze tools of the same name by putting those tools earlier in the path.  Consider the fact that you never uninstalled your default system version of ruby, yet when you type ```ruby``` you get the version that `rbenv` gives you instead of the version that shipped with OSX.
+
+Unix comes with a tool to help you debug issues with the path called ```which```.  See which ruby your computer is currently running with ```which ruby```.  The result of which tells you where unix found the command that you invoked.  The output of this command should tell you that you are using a version of ruby provided by rbenv.  We will create an example of this together in the next section.
 
 ## Release 2
 -----------
 
 *Create a new executable and add it to your path*
 
-Create a directory using ```mkdir```
+- Create a directory using ```mkdir``` (hint: look up `mkdir` using `man`)
+- ```touch``` a new file called ```ls```
+- Edit the new file using your editior of choice.
+  - Add to this file a command that has some interesting output for example ```echo My Cohort Runs DBC!!!!!111one```.
+- Save this file.
 
-```touch``` a new file called ```ls```
+When you want to execute any program not found in your path (such as the one we just made) you need to tell unix the path to that program not just the name of the program.  Thus we can type the full path to the command ie: ```/Users/topher/Desktop/super-best-unix/ls``` or we can use a single dot ```.```.  Obviously typing the complete path to a folder you are already in is annoying.  You can always shortcut to your current working directory with a simple period.  So we can type ```./ls``` and it will have the same effect as typing the full path.
 
-Edit the new file using your editior of choice.
+Spoiler Alert: ```bash: ./ls: Permission denied``` is going to happen to you.
 
-Add to this file a command that has some interesting output for example ```echo My Cohort Runs DBC!!!!!111one```.  Save this file and try to run it locally.  When you want to execute any program not found in your path (such as the one we just made) you need to tell unix the path to that program not just the name of the program.  Thus we can type the full path to the command ie: ```/Users/topher/Desktop/super-best-unix/ls``` or we can use ```.```.  Obviously typing the complete path to a folder you are already in is annoying.  You can always shortcut to your current working directory with a simple period.  So we can type ```./ls``` and it will have the same effect as typing the full path.  Spoiler Alert: ```bash: ./ls: Permission denied``` is going to happen to you.
+In the windows world we know that a file is a program because the filename ends in ```.exe```.  In unix there are a series of bits (stored as properties of the file, like it's name and timestamp) that tell the computer if that file can be executed by a given user.  In order to execute this file we must flip the executable bit on.  Shockingly, unix has a tool for that.  We can use ```chmod```to make the change.  Use the man pages or the googles to determine how to do this.
 
-In the windows world we know that a file is a program because the filename ends in ```.exe``` in unix there are a series of bits that tell the computer if a file can be executed by a given user.  In order to execute this file we must flip the executable bit on.  Shockingly unix has a tool for that.  We can use ```chmod```to modify this bit.  Use the man pages or the googles to determine how to do this.  Hint: the syntax to REMOVE read permission from the file we just created you could run ```chmod -r```.
+You can determine if you have successfully made the ls program executable when typing ```./ls``` yields the echo output you wrote earlier.
 
-You can determine if you have successfully made the ls program when typing ```./ls``` yields the echo output you wrote earlier.
-
-We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  Let's add it to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.
+We are lazy.  Typing that ```./``` everytime we want to run our little ls is super annoying.  We're going to add the current directory (denoted by the `.`) to the path with all of our other cool programs.  Below are some examples of adding directories for rbenv and homebrew to the path.
 
 ```
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 ```
 
-Note that each path location is deleniated by a ```:```.  Additionally these additions to the path are made non-destructive becasuse the END of each addition the variable ```$PATH``` will add the exisitng path back to the path variable.  The keeps the exisitng path intact when adding new things to it.  You need to add ```.``` to the beginning of you path for this part of the challenge.  Please note that shell variables hate whitespace.  Whitespace tells shell to look for a new command.  Don't use spaces.  For example:
+Note that each path location is deleniated by a ```:```.  Additionally these additions to the path are made non-destructive becasuse the END of each addition the variable ```$PATH``` will add the exisitng path back to the path variable.  The keeps the exisitng path intact when adding new things to it.  Please note that shell variables hate whitespace.  Whitespace tells shell to look for a new command.  Don't use spaces.  For example:
 
 ```
 TOPHER="You can have spaces in strings, thats cool, but not outside strings :/"
 echo $TOPHER
 ```
 
-When you have succeeded you will be able to type ```ls``` in the folder where your custom ```ls``` is located and see the output of your ```echo```.  Additionally the command ```echo $PATH | tr : \\n``` should look something like this
+Now that you know a little more about PATHs and spaces in Bash, let's add ```.``` to the beginning of your path.  When you have succeeded you will be able to type ```ls``` in the folder where your custom ```ls``` is located and see the output of your ```echo```.  Additionally the command ```echo $PATH | tr : \\n``` should look something like this
 
 ```
 .
@@ -136,7 +153,7 @@ When you have succeeded you will be able to type ```ls``` in the folder where yo
 
 Congratulations! You can now manipulate a path (and troll people!)
 
-However, if we want this setting to exist outside of the current session we have to add this PATH addition to the shell initilization files.  Most commonly for bash this is ```.bash_profile``` and in ZSH is ```.zshrc```.  These files are just a list of commands than run when you start your shell... **Everytime** you start your shell.
+However, if we want this setting to exist outside of the current session we have to add this PATH addition to the shell initilization files.  Most commonly in bash this is a file called ```.bash_profile```.  This file is a list of commands than run when you start your shell... **Everytime** you start your shell.
 
 ## Release 3
 
@@ -162,5 +179,19 @@ When you have succeeded the output from which python should read ```/Users/tophe
 
 YAY! Python works and stuff! Congratulations you are a UNIX master(ish).
 
+## Release 4
 
+*opening up your awareness*
 
+Now that you've seen how you can use UNIX to get stuff done, take a look at all the possibilities by reviewing 2 popular books on the subject (from your phase 1 dropbox of books):
+
+1. http://tinyurl.com/sobell-on-linux
+2. http://tinyurl.com/parker-on-shell-scripting
+
+- skim the table of contents of both books
+- read as much as you can of chapters 5, 8 and 10 in book #1 (Sobell)
+- consider using your new knowledge of the shell to solve some real problems:
+  - try writing tests against your API using a bunch of curl statements in a shell script
+  - try massaging the text in your Rails log files to make better reports
+  - try working with some UNIX system utilities to see how much memory your Rails app is consuming
+  - try trolling your cohort mates by hacking their pairing machines (don't worry, Topher fixes these things later)
